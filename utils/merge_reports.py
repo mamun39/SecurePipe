@@ -1,3 +1,4 @@
+# utils/merge_reports.py
 import json, pathlib
 from rich import print
 
@@ -15,19 +16,22 @@ for name, path in reports.items():
     p = pathlib.Path(path)
     if p.exists():
         try:
-            data = json.loads(p.read_text())
+            # 🔧 read as UTF-8; tolerate odd bytes
+            text = p.read_text(encoding="utf-8", errors="replace")
+            data = json.loads(text)
             merged["sources"][name] = True
-            # naive extract of vulns by known fields; refined later
+
             if name == "trivy":
                 for r in data.get("Results", []):
                     for v in r.get("Vulnerabilities", []) or []:
                         merged["vulnerabilities"].append({
                             "tool": "trivy",
                             "id": v.get("VulnerabilityID"),
-                            "severity": v.get("Severity", "UNKNOWN")
+                            "severity": v.get("Severity", "UNKNOWN"),
                         })
         except Exception as e:
             print(f"[yellow]{name}: skip parse error: {e}[/yellow]")
 
-pathlib.Path("reports/merged.json").write_text(json.dumps(merged, indent=2))
+out = pathlib.Path("reports/merged.json")
+out.write_text(json.dumps(merged, indent=2), encoding="utf-8")
 print("[green]wrote reports/merged.json[/green]")
