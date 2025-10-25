@@ -50,10 +50,10 @@ This design mirrors enterprise “Security-as-Code” maturity: automated, repea
 ```mermaid
 flowchart TD
     A[Source Code / Container] --> B[SecurePipe Orchestrator]
-    B --> C1[Semgrep<br/>(SAST)]
-    B --> C2[Gitleaks<br/>(Secrets)]
-    B --> C3[Trivy / pip-audit<br/>(Dependencies)]
-    B --> C4[Syft<br/>(SBOM)]
+    B --> C1[Semgrep\n(SAST)]
+    B --> C2[Gitleaks\n(Secrets)]
+    B --> C3[Trivy / pip-audit\n(Dependencies)]
+    B --> C4[Syft\n(SBOM)]
     C1 --> D[merge_reports.py]
     C2 --> D
     C3 --> D
@@ -61,7 +61,7 @@ flowchart TD
     D --> E[aggregate_score.py]
     E --> F[security-summary.md]
     E -->|Policy Threshold| G[Build Pass/Fail]
-````
+```
 
 ---
 
