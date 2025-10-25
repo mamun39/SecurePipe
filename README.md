@@ -48,7 +48,7 @@ This design mirrors enterprise “Security-as-Code” maturity: automated, repea
 ## 🏗️ Architecture
 
 ```mermaid
-flowchart TD
+flowchart TD;
     A[Source Code / Container] --> B[SecurePipe Orchestrator];
     B --> C1[Semgrep(SAST)];
     B --> C2[Gitleaks(Secrets)];
