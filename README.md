@@ -1,6 +1,6 @@
 # SecurePipe — Automated Security Checks for CI/CD and Containers
 
-![GitHub Actions](https://img.shields.io/github/actions/workflow/status/<github.com/mamun39>/securepipe/security.yml?label=CI%2FCD&logo=github)
+![GitHub Actions](https://img.shields.io/github/actions/workflow/status/mamun39/securepipe/security.yml?branch=main&label=CI%2FCD&logo=github)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Python](https://img.shields.io/badge/python-3.12+-blue.svg)
 ![Status](https://img.shields.io/badge/status-active-success)
