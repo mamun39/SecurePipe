@@ -63,40 +63,6 @@ flowchart TD;
     E -->|Policy Threshold| G[Build Pass/Fail];
 ```
 
-<!-- ```mermaid
-flowchart TD
-    A[Start] --> B[Process]
-    B --> C[End]
-```
-
-```mermaid
-flowchart TD
-    A[Source Code / Container]
-    B[SecurePipe Orchestrator]
-    C1[Semgrep SAST]
-    C2[Gitleaks Secrets]
-    C3[Trivy / pip-audit Dependencies]
-    C4[Syft SBOM]
-    D[merge_reports.py]
-    E[aggregate_score.py]
-    F[security-summary.md]
-    G[Build Pass/Fail]
-
-    A --> B
-    B --> C1
-    B --> C2
-    B --> C3
-    B --> C4
-    C1 --> D
-    C2 --> D
-    C3 --> D
-    C4 --> D
-    D --> E
-    E --> F
-    E -->|Policy Threshold| G
-
-``` -->
-
 ---
 
 ## 🧰 Local Setup
