@@ -4,5 +4,8 @@ labels: [bug]
 body:
   - type: textarea
     id: what-happened
-    attributes: { label: What happened?, placeholder: Describe the issue… }
-    validations: { required: true }
+    attributes:
+      label: "What happened?"
+      placeholder: "Describe the issue..."
+    validations:
+      required: true

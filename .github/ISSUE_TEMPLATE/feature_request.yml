@@ -1,54 +1,30 @@
-name: SecurePipe CI
-
-on:
-  push:
-  pull_request:
-
-permissions:
-  contents: read
-  security-events: write
-
-jobs:
-  security:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install Python deps
-        run: |
-          python -m pip install -U pip
-          pip install -r requirements.txt
-          pip install pip-audit semgrep
-
-      - name: Install Trivy
-        run: curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
-
-      - name: Install Gitleaks
-        run: curl -sSfL https://raw.githubusercontent.com/gitleaks/gitleaks/master/install.sh | bash
-
-      - name: Install Syft
-        run: curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
-
-      - name: Run Scanners
-        run: |
-          python scanners/run_semgrep.py || true
-          python scanners/run_gitleaks.py || true
-          python scanners/run_pip_audit.py || true
-          python scanners/run_trivy.py || true
-          python scanners/run_syft.py || true
-
-      - name: Merge & Aggregate
-        run: |
-          python utils/merge_reports.py
-          python utils/aggregate_score.py --fail-threshold high
-
-      - name: Upload reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: securepipe-reports
-          path: reports/**
+name: Feature request
+description: Suggest an improvement for SecurePipe
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to help improve SecurePipe! Please fill out the sections below so we can understand your idea.
+  - type: textarea
+    id: problem
+    attributes:
+      label: "What problem are you trying to solve?"
+      description: "Describe the workflow or scenario that could be improved."
+      placeholder: "When I try to..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "Describe the proposed solution"
+      description: "Share the feature or change you would like to see."
+      placeholder: "It would help if SecurePipe could..."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "Additional context"
+      description: "List any alternatives you've considered, related issues, or other context."
+      placeholder: "I've also considered..."
