@@ -73,7 +73,7 @@ flowchart TD
 flowchart TD
     A[Source Code / Container]
     B[SecurePipe Orchestrator]
-    C1[Semgrep (SAST)]
+    C1[Semgrep SAST]
     C2[Gitleaks (Secrets)]
     C3[Trivy / pip-audit (Dependencies)]
     C4[Syft (SBOM)]
