@@ -1,6 +1,6 @@
 # SecurePipe — Automated Security Checks for CI/CD and Containers
 
-![GitHub Actions](https://img.shields.io/github/actions/workflow/status/<your-github>/securepipe/security.yml?label=CI%2FCD&logo=github)
+![GitHub Actions](https://img.shields.io/github/actions/workflow/status/<github.com/mamun39>/securepipe/security.yml?label=CI%2FCD&logo=github)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Python](https://img.shields.io/badge/python-3.12+-blue.svg)
 ![Status](https://img.shields.io/badge/status-active-success)
@@ -35,11 +35,11 @@ Think of it as an **automated security gate for your CI/CD pipeline**.
 
 Unlike standalone scanners, **SecurePipe** provides:
 
-- 🧩 **Unified orchestration** — all tools integrated under one CLI & CI pipeline  
-- 🚦 **Policy enforcement** — configurable thresholds (fail on `high` or `critical`)  
-- 📊 **One consolidated report** — all findings merged into `reports/security-summary.md`  
-- 🧾 **Reproducibility** — deterministic setup, works on Linux, macOS, and Windows  
-- 🔁 **Developer-friendly DX** — one command (`make scan-all` or `bash scripts/run_all_local.sh`)  
+- **Unified orchestration** — all tools integrated under one CLI & CI pipeline  
+- **Policy enforcement** — configurable thresholds (fail on `high` or `critical`)  
+- **One consolidated report** — all findings merged into `reports/security-summary.md`  
+- **Reproducibility** — deterministic setup, works on Linux, macOS, and Windows  
+- **Developer-friendly DX** — one command (`make scan-all` or `bash scripts/run_all_local.sh`)  
 
 This design mirrors enterprise “Security-as-Code” maturity: automated, repeatable, and auditable.
 
