@@ -77,7 +77,7 @@ flowchart TD;
 ### 2️⃣ Clone and setup
 
 ```bash
-git clone https://github.com/<your-github>/securepipe.git
+git clone git@github.com:mamun39/SecurePipe.git
 cd securepipe
 python -m venv .venv
 source .venv/bin/activate        # on macOS/Linux
