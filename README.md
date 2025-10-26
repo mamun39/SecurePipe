@@ -1,4 +1,4 @@
-# 🔒 SecurePipe — Automated Security Checks for CI/CD and Containers
+# SecurePipe — Automated Security Checks for CI/CD and Containers
 
 ![GitHub Actions](https://img.shields.io/github/actions/workflow/status/<your-github>/securepipe/security.yml?label=CI%2FCD&logo=github)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -7,7 +7,7 @@
 
 ---
 
-## 🧩 Overview
+## Overview
 
 **SecurePipe** is a lightweight, **policy-driven DevSecOps pipeline** that automates security checks for every commit, pull request, and container build.
 
@@ -17,7 +17,7 @@ Think of it as an **automated security gate for your CI/CD pipeline**.
 
 ---
 
-## ⚙️ Features
+## Features
 
 | Category | Tool | Purpose |
 |-----------|------|---------|
@@ -31,7 +31,7 @@ Think of it as an **automated security gate for your CI/CD pipeline**.
 
 ---
 
-## 🧠 Why It’s Special
+## Why It’s Special
 
 Unlike standalone scanners, **SecurePipe** provides:
 
@@ -45,7 +45,7 @@ This design mirrors enterprise “Security-as-Code” maturity: automated, repea
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```mermaid
 flowchart TD;
@@ -65,7 +65,7 @@ flowchart TD;
 
 ---
 
-## 🧰 Local Setup
+## Local Setup
 
 ### 1️⃣ Prerequisites
 
@@ -106,7 +106,7 @@ python -m pip install pip-audit
 
 ---
 
-## 🚀 Run Locally
+## Run Locally
 
 ### Option A — Makefile
 
@@ -141,7 +141,7 @@ reports/security-summary.md
 Example:
 
 ```markdown
-# 🔐 Security Summary
+# Security Summary
 
 | Severity | Count |
 |-----------|------:|
@@ -156,7 +156,7 @@ Example:
 
 ---
 
-## 🧪 CI/CD Integration (GitHub Actions)
+## CI/CD Integration (GitHub Actions)
 
 This repo includes a ready-to-use workflow:
 `.github/workflows/security.yml`
@@ -188,7 +188,7 @@ jobs:
 
 ---
 
-## 📦 Reports and Artifacts
+## Reports and Artifacts
 
 | File                          | Description                       |
 | ----------------------------- | --------------------------------- |
@@ -201,7 +201,7 @@ jobs:
 
 ---
 
-## 🧱 Directory Structure
+## Directory Structure
 
 ```
 securepipe/
@@ -231,7 +231,7 @@ securepipe/
 
 ---
 
-## 🧾 Example Use Case
+## Example Use Case
 
 Integrate SecurePipe into your team’s workflow to:
 
@@ -242,14 +242,14 @@ Integrate SecurePipe into your team’s workflow to:
 
 ---
 
-## 🛡️ Security Policy
+## Security Policy
 
 See [`SECURITY.md`](SECURITY.md).
 All findings and disclosures should be reported via GitHub Security Advisories.
 
 ---
 
-## 🧑‍💻 Contributing
+## Contributing
 
 1. Fork this repo & create a feature branch.
 2. Use [Conventional Commits](https://www.conventionalcommits.org).
@@ -262,13 +262,13 @@ All findings and disclosures should be reported via GitHub Security Advisories.
 
 ---
 
-## 🧾 License
+## License
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## ✨ Acknowledgements
+## Acknowledgements
 
 * [Semgrep](https://semgrep.dev) — SAST engine
 * [Gitleaks](https://github.com/gitleaks/gitleaks) — secret scanner
@@ -279,7 +279,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 ---
 
-### 🌟 Future Roadmap
+### Future Roadmap
 
 * [ ] Add HTML/Streamlit dashboard for visual reports
 * [ ] Add CodeQL and Bandit integration
@@ -289,6 +289,6 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 ---
 
-**SecurePipe** — Automating Security, One Pipeline at a Time 🔐
+**SecurePipe** — Automating Security, One Pipeline at a Time
 
 
