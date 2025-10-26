@@ -63,6 +63,12 @@ flowchart TD;
     E -->|Policy Threshold| G[Build Pass/Fail];
 ```
 
+```mermaid
+flowchart TD
+    A[Start] --> B[Process]
+    B --> C[End]
+```
+
 ---
 
 ## 🧰 Local Setup
