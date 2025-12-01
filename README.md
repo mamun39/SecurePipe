@@ -60,7 +60,7 @@ flowchart TD;
     C4 --> D;
     D --> E[aggregate_score.py];
     E --> F[security-summary.md];
-    E -->|Policy Threshold| G[Build Pass/Fail];
+    E -->|Policy Threshold| G[Build Pass/Fail via Conftest];
 ```
 
 ---
@@ -93,6 +93,7 @@ pip install -U pip -r requirements.txt
 ```bash
 bash scripts/install_tools.sh
 ```
+> The installer also sets up Conftest for enforcing `policies/cicd.rego` during `aggregate_score.py`.
 
 #### On Windows:
 
@@ -130,6 +131,8 @@ python scanners/run_trivy.py
 python scanners/run_syft.py
 python utils/merge_reports.py
 python utils/aggregate_score.py --fail-threshold high
+# (optional) enforce policy with Conftest if installed
+conftest test reports/merged.json --policy policies/
 ```
 
 After the run, open:
@@ -195,8 +198,9 @@ jobs:
 | `reports/semgrep.sarif`       | SAST findings (static code flaws) |
 | `reports/gitleaks.json`       | Secrets scan results              |
 | `reports/trivy.json`          | Dependency & container CVEs       |
+| `reports/pip-audit.json`      | Python dependency CVEs            |
 | `reports/sbom-spdx.json`      | Generated SBOM                    |
-| `reports/merged.json`         | Unified vulnerability list        |
+| `reports/merged.json`         | Unified vulnerability list (Semgrep, Gitleaks, Trivy, pip-audit) |
 | `reports/security-summary.md` | Human-readable severity table     |
 
 ---
@@ -214,8 +218,7 @@ securepipe/
 │   └── run_syft.py
 ├── utils/
 │   ├── merge_reports.py
-│   ├── aggregate_score.py
-│   └── fmt_json.py
+│   └── aggregate_score.py
 ├── policies/
 │   └── cicd.rego
 ├── reports/
@@ -290,5 +293,3 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 ---
 
 **SecurePipe** — Automating Security, One Pipeline at a Time
-
-
