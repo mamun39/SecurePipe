@@ -3,7 +3,7 @@
 | Severity  | Count |
 |-----------|------:|
 | CRITICAL  | 0 |
-| HIGH      | 0 |
+| HIGH      | 2 |
 | MEDIUM    | 2 |
 | LOW       | 0 |
 | UNKNOWN   | 0 |

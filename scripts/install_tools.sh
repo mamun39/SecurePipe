@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Install CLI tools (Linux runner)
+# Install CLI tools (Linux/macOS)
 curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
 # Gitleaks install (try multiple strategies to avoid 404s)
@@ -50,6 +50,43 @@ install_gitleaks() {
 }
 
 install_gitleaks || true
+
+# Conftest (OPA) for policy enforcement
+install_conftest() {
+  if command -v conftest >/dev/null 2>&1; then
+    echo "conftest already installed"
+    return 0
+  fi
+
+  if command -v brew >/dev/null 2>&1; then
+    if brew list conftest >/dev/null 2>&1 || brew install conftest; then
+      echo "conftest installed via brew"
+      return 0
+    fi
+  fi
+
+  local version="${CONFTEST_VERSION:-0.56.0}"
+  local os arch
+  os="$(uname -s)"
+  arch="$(uname -m)"
+  case "$arch" in
+    x86_64) arch="x86_64" ;;
+    arm64|aarch64) arch="arm64" ;;
+  esac
+  local tarball="conftest_${version}_${os}_${arch}.tar.gz"
+  local url="https://github.com/open-policy-agent/conftest/releases/download/v${version}/${tarball}"
+  if curl -sSfL "$url" -o "/tmp/${tarball}"; then
+    tar -xzf "/tmp/${tarball}" -C /tmp conftest
+    install -m 0755 "/tmp/conftest" /usr/local/bin/conftest
+    echo "conftest installed via ${url}"
+    return 0
+  fi
+
+  echo "conftest installation failed; please install manually (brew install conftest)" >&2
+  return 1
+}
+
+install_conftest || true
 
 curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
 pip install pip-audit semgrep
