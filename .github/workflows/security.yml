@@ -29,10 +29,13 @@ jobs:
         run: curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
       - name: Install Gitleaks
-        run: curl -sSfL https://raw.githubusercontent.com/gitleaks/gitleaks/master/install.sh | bash
+        run: curl -sSfL https://raw.githubusercontent.com/gitleaks/gitleaks/main/scripts/install.sh | bash
 
       - name: Install Syft
-        run: curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+        run: curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/scripts/install.sh | sh -s -- -b /usr/local/bin
+
+      - name: Install Conftest (for policy enforcement)
+        run: curl -sSL https://github.com/open-policy-agent/conftest/releases/latest/download/conftest_Linux_x86_64.tar.gz | sudo tar -xz -C /usr/local/bin conftest
 
       - name: Run Scanners
         run: |
