@@ -36,7 +36,10 @@ jobs:
 
       - name: Install Conftest (for policy enforcement)
         run: |
-          curl -sSfL https://github.com/open-policy-agent/conftest/releases/latest/download/conftest_Linux_x86_64.tar.gz -o /tmp/conftest.tar.gz
+          version="${CONFTEST_VERSION:-0.56.0}"
+          tarball="conftest_${version}_Linux_x86_64.tar.gz"
+          url="https://github.com/open-policy-agent/conftest/releases/download/v${version}/${tarball}"
+          curl -sSfL "$url" -o /tmp/conftest.tar.gz
           sudo tar -xzf /tmp/conftest.tar.gz -C /usr/local/bin conftest
           conftest --version
 
